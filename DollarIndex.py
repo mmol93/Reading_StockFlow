@@ -5,16 +5,16 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-## EWY 지수 얻기 위한 파일임 - ok
+## 달러 인덱스 지수 얻기 위한 파일임 - ok
 
-def EWY_Graph():
+def dollarIndex():
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
     options.add_argument("disable-gpu")
 
     # 구글에 접속
     driver = webdriver.Chrome("C:/selenium/chromedriver", options=options)
-    url = "https://kr.investing.com/etfs/ishares-south-korea-index-historical-data"
+    url = "https://kr.investing.com/currencies/us-dollar-index-historical-data"
     driver.get(url)
     time.sleep(2)
 
@@ -49,7 +49,7 @@ def EWY_Graph():
     # 출력할 데이터 - ok
     show_list = []
 
-    show_list.append("EWY 지수: ")
+    show_list.append("달러 인덱스: ")
     show_list.append(date_list[0])
     show_list.append(price_list[0])
     show_list.append(change_list)

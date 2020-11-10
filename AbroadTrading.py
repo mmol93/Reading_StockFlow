@@ -4,16 +4,16 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
-## 미국 주택가격 지수 얻기 위한 파일임 - ok
+## 한국 경상수지 지수 얻기 위한 파일임 - ok
 
-def estate_price():
+def tradingGraph():
     options = webdriver.ChromeOptions()
     options.add_argument("headless")
     options.add_argument("disable-gpu")
 
     # 구글에 접속
     driver = webdriver.Chrome("C:/selenium/chromedriver", options=options)
-    url = "https://kr.investing.com/economic-calendar/monthly-home-price-index-1287"
+    url = "https://kr.investing.com/economic-calendar/south-korean-current-account-789"
     driver.get(url)
     time.sleep(2)
 
@@ -39,24 +39,18 @@ def estate_price():
         PT_element3 = PT_element2.find_elements_by_class_name("noWrap")
         PT_list.append(PT_element3[i].text)
 
-    # PT_lsit의 각 항목 증감율 계산하기
-    PT_Result_list = []
-    # if PT_list[0] == " ":
-    #     PT_Result_list.append("기록 없음")
-    # else:
-    #     result = (float(PT_list[0]) - float(PT_list[1])) / float(PT_list[1]) * 100
-    #     PT_Result_list.append(str(round(result, 2)) + "%")
-
-    for i in range(1, 4):
-        result = (float(PT_list[i]) - float(PT_list[i + 1])) / float(PT_list[i + 1]) * 100
-        PT_Result_list.append(str(round(result, 2)) + "%")
-
     result_list = []
 
-    result_list.append("미국 주택가격 지수: ")
+    result_list.append("한국 경상수지 지수: ")
     result_list.append(date_list[1])    # 직전 날짜
-    result_list.append(PT_list[1])      # 직전 발표
-    result_list.append(PT_Result_list)  # 최근 3개 증감율
+
+    # 직전 발표 데이터들(4개 -> 3개로 변경함 - 20.11.10) - ok
+    for i in range(1, 4):
+        if PT_list[i] == " ":
+            result_list.append("아직 자료없음")
+        else:
+            result_list.append(PT_list[i])
+
     result_list.append(driver.current_url)
 
     print(result_list)

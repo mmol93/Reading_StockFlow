@@ -44,3 +44,7 @@ def indexOfFuture():
         show_list.insert(1, change_list[i])
         print(show_list)    # 선물 지수 리스트 출력(다우, S&P, 나스닥)
         show_list.clear()
+
+    print(driver.current_url)
+
+    driver.close()

@@ -55,5 +55,8 @@ def VIX_Graph():
     show_list.append(date_list[0])
     show_list.append(price_list[0])
     show_list.append(change_list)
+    show_list.append(driver.current_url)
 
     print(show_list)
+
+    driver.close()
