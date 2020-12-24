@@ -42,10 +42,10 @@ def tradingGraph():
     result_list = []
 
     result_list.append("한국 경상수지 지수: ")
-    result_list.append(date_list[1])    # 직전 날짜
+    result_list.append(date_list[0])    # 직전 날짜
 
     # 직전 발표 데이터들(4개 -> 3개로 변경함 - 20.11.10) - ok
-    for i in range(1, 4):
+    for i in range(0, 4):
         if PT_list[i] == " ":
             result_list.append("아직 자료없음")
         else:

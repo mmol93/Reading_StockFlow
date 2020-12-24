@@ -54,7 +54,7 @@ try:
     AbroadTrading.tradingGraph()
 
     # 미국 달러 인덱스 지수
-    DollarIndex.dollarIndex()
+    # DollarIndex.dollarIndex()
 
     driver.quit()
 

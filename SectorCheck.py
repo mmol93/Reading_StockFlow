@@ -4,6 +4,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+# 증시 흐름 분석 툴
+
 ## 미국 주식 섹터별 주요 종목 상황체크
 # +1.3% or -1.3%일 때 해당 섹터명 + 종목명을 출력함
 
@@ -122,10 +124,17 @@ def sectorCheck():
 def connectToLink(url, name_List, change_list):
     driver.get(url)
     time.sleep(2)
-
+    # name_list : 웹 표지에 있는 종목명
     name_List.append(driver.find_element_by_xpath('//*[@id="leftColumn"]/div[1]/h1').text)
-    change_list.append(
-        driver.find_element_by_xpath('//*[@id="quotes_summary_current_data"]/div[1]/div[2]/div[1]/span[4]').text)
+
+    # change_list : 웹 표지에 있는 종목의 변동률(%)
+    try:
+        change_list.append(
+            driver.find_element_by_xpath('//*[@id="quotes_summary_current_data"]/div[1]/div[1]/div[1]/div[2]/span[4]').text)
+    except:
+        change_list.append(
+            driver.find_element_by_xpath('//*[@id="quotes_summary_current_data"]/div[1]/div[2]/div[1]/span[4]').text)
+
 
 def select_stock(tpye):
     for i in range(0, len(change)):
