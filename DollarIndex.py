@@ -22,7 +22,7 @@ def dollarIndex():
     # 일주일치 price 데이터 얻기 - ok
     for i in range(1, 8):
         price_xpath = "//*[@id='curr_table']/tbody/tr[" + str(i) + "]/td[2]"
-        price_element = WebDriverWait(driver, 12). \
+        price_element = WebDriverWait(driver, 20). \
         until(EC.presence_of_all_elements_located((By.XPATH, price_xpath)))
 
         price_list.append(price_element[0].text)

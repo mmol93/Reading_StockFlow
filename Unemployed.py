@@ -22,7 +22,7 @@ def unemployment():
     # 날짜 데이터 가져오기 - ok
     date_list = []
     for i in range(0, 7, 2):    # 2개씩 띄워서 가져오기(0, 2, 4, 6)
-        date_element1 = WebDriverWait(driver, 12). \
+        date_element1 = WebDriverWait(driver, 20). \
         until(EC.presence_of_all_elements_located((By.XPATH, "//*[@id='eventTabDiv_history_0']")))
 
         date_element2 = date_element1[0].find_element_by_tag_name("tbody")
@@ -32,7 +32,7 @@ def unemployment():
     # 발표 데이터 가져오기 - ok
     PT_list = []
     for i in range(0, 13, 3):  # 3개씩 띄워서 가져오기
-        PT_element1 = WebDriverWait(driver, 12). \
+        PT_element1 = WebDriverWait(driver, 20). \
             until(EC.presence_of_all_elements_located((By.XPATH, "//*[@id='eventTabDiv_history_0']")))
 
         PT_element2 = PT_element1[0].find_element_by_tag_name("tbody")

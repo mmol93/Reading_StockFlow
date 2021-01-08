@@ -32,7 +32,7 @@ def tradingGraph():
     # 발표 데이터 가져오기 - ok
     PT_list = []
     for i in range(0, 13, 3):  # 3개씩 띄워서 가져오기
-        PT_element1 = WebDriverWait(driver, 12). \
+        PT_element1 = WebDriverWait(driver, 20). \
             until(EC.presence_of_all_elements_located((By.XPATH, "//*[@id='eventTabDiv_history_0']")))
 
         PT_element2 = PT_element1[0].find_element_by_tag_name("tbody")

@@ -22,7 +22,7 @@ def EWY_Graph():
     # 일주일치 price 데이터 얻기 - ok
     for i in range(1, 8):
         price_xpath = "//*[@id='curr_table']/tbody/tr[" + str(i) + "]/td[2]"
-        price_element = WebDriverWait(driver, 12). \
+        price_element = WebDriverWait(driver, 20). \
         until(EC.presence_of_all_elements_located((By.XPATH, price_xpath)))
 
         price_list.append(price_element[0].text)
@@ -31,7 +31,7 @@ def EWY_Graph():
     # 일주일치 change 데이터 얻기 - ok
     for i in range(1, 8):
         change_xpath = "//*[@id='curr_table']/tbody/tr[" + str(i) + "]/td[7]"
-        change_element = WebDriverWait(driver, 12). \
+        change_element = WebDriverWait(driver, 20). \
             until(EC.presence_of_all_elements_located((By.XPATH, change_xpath)))
 
         change_list.append(change_element[0].text)
@@ -40,7 +40,7 @@ def EWY_Graph():
     date_list = []
     for i in range(1, 8):
         date_xpath = "//*[@id='curr_table']/tbody/tr[" + str(i) + "]/td[1]"
-        date_element = WebDriverWait(driver, 12). \
+        date_element = WebDriverWait(driver, 20). \
             until(EC.presence_of_all_elements_located((By.XPATH, date_xpath)))
 
         date_list.append(date_element[0].text)
